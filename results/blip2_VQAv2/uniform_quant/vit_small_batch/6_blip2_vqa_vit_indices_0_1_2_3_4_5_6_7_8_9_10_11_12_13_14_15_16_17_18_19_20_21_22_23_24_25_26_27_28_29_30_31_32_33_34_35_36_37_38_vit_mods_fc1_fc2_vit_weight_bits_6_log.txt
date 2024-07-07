@@ -1,0 +1,803 @@
+WARNING:__main__:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+| distributed init (rank 0, world 8): env://
+| distributed init (rank 1, world 8): env://
+| distributed init (rank 2, world 8): env://
+| distributed init (rank 5, world 8): env://
+| distributed init (rank 7, world 8): env://
+| distributed init (rank 3, world 8): env://
+| distributed init (rank 6, world 8): env://
+| distributed init (rank 4, world 8): env://
+CACHE_ROOT:/fs/nexus-scratch/vla/.cache
+STORAGE_PATH:/fs/nexus-scratch/vla/.cache/coco/annotations/vqa_val_eval.json
+2024-07-07 03:15:51,239 [INFO] 
+=====  Running Parameters    =====
+2024-07-07 03:15:51,239 [INFO] {
+    "batch_size_eval": 64,
+    "batch_size_train": 16,
+    "device": "cuda",
+    "dist_backend": "nccl",
+    "dist_url": "env://",
+    "distributed": true,
+    "evaluate": true,
+    "gpu": 0,
+    "inference_method": "generate",
+    "max_len": 10,
+    "min_len": 1,
+    "num_beams": 5,
+    "num_workers": 4,
+    "output_dir": "/fs/nexus-scratch/vla/LAVIS/output/BLIP2/VQA",
+    "prompt": "Question: {} Short answer:",
+    "rank": 0,
+    "seed": 42,
+    "task": "vqa",
+    "test_splits": [
+        "val"
+    ],
+    "world_size": 8
+}
+2024-07-07 03:15:51,239 [INFO] 
+======  Dataset Attributes  ======
+2024-07-07 03:15:51,239 [INFO] 
+======== coco_vqa =======
+2024-07-07 03:15:51,240 [INFO] {
+    "build_info": {
+        "annotations": {
+            "val": {
+                "storage": [
+                    "coco/annotations/vqa_val_eval.json",
+                    "coco/annotations/answer_list.json",
+                    "coco/annotations/v2_OpenEnded_mscoco_val2014_questions.json",
+                    "coco/annotations/v2_mscoco_val2014_annotations.json"
+                ],
+                "url": [
+                    "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/vqav2/vqa_val_eval.json",
+                    "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/vqav2/answer_list.json",
+                    "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/vqav2/v2_OpenEnded_mscoco_val2014_questions.json",
+                    "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/vqav2/v2_mscoco_val2014_annotations.json"
+                ]
+            }
+        },
+        "images": {
+            "storage": "coco/images/"
+        }
+    },
+    "data_type": "images",
+    "text_processor": {
+        "eval": {
+            "name": "blip_question"
+        }
+    },
+    "type": "eval",
+    "vis_processor": {
+        "eval": {
+            "image_size": 224,
+            "name": "blip_image_eval"
+        }
+    }
+}
+2024-07-07 03:15:51,240 [INFO] 
+======  Model Attributes  ======
+2024-07-07 03:15:51,240 [INFO] {
+    "arch": "blip2_t5",
+    "drop_path_rate": 0,
+    "finetuned": "",
+    "freeze_vit": true,
+    "image_size": 224,
+    "load_finetuned": false,
+    "model_type": "pretrain_flant5xl",
+    "num_query_token": 32,
+    "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+    "prompt": "",
+    "t5_model": "google/flan-t5-xl",
+    "use_grad_checkpoint": false,
+    "vit_precision": "fp16"
+}
+Using downloaded and verified file: /fs/nexus-scratch/vla/.cache/coco/annotations/vqa_val_eval.json
+STORAGE_PATH:/fs/nexus-scratch/vla/.cache/coco/annotations/answer_list.json
+Using downloaded and verified file: /fs/nexus-scratch/vla/.cache/coco/annotations/answer_list.json
+STORAGE_PATH:/fs/nexus-scratch/vla/.cache/coco/annotations/v2_OpenEnded_mscoco_val2014_questions.json
+Using downloaded and verified file: /fs/nexus-scratch/vla/.cache/coco/annotations/v2_OpenEnded_mscoco_val2014_questions.json
+STORAGE_PATH:/fs/nexus-scratch/vla/.cache/coco/annotations/v2_mscoco_val2014_annotations.json
+Using downloaded and verified file: /fs/nexus-scratch/vla/.cache/coco/annotations/v2_mscoco_val2014_annotations.json
+2024-07-07 03:15:51,273 [INFO] Building datasets...
+2024-07-07 03:16:02,437 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+2024-07-07 03:16:02,445 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+2024-07-07 03:16:02,450 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+2024-07-07 03:16:02,451 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+2024-07-07 03:16:02,453 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+2024-07-07 03:16:02,462 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+2024-07-07 03:16:02,463 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+2024-07-07 03:16:02,480 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+MODEL_NAME: eva_clip_g
+2024-07-07 03:17:57,847 [INFO] freeze vision encoder
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:23<00:23, 23.88s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:24<00:24, 24.04s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:23<00:23, 23.96s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:24<00:24, 24.05s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:24<00:24, 24.11s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:24<00:24, 24.09s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:24<00:24, 24.48s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:24<00:24, 24.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 13.70s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 15.26s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 13.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 15.29s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 13.72s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 15.25s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 13.72s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 15.26s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 13.75s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 15.30s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 13.82s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 15.35s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 13.91s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:30<00:00, 15.49s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 14.08s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.68s/it]
+2024-07-07 03:21:01,046 [INFO] load checkpoint from https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth
+Blip2T5(
+  (visual_encoder): VisionTransformer(
+    (patch_embed): PatchEmbed(
+      (proj): Conv2d(3, 1408, kernel_size=(14, 14), stride=(14, 14))
+    )
+    (pos_drop): Dropout(p=0.0, inplace=False)
+    (blocks): ModuleList(
+      (0-38): 39 x Block(
+        (norm1): LayerNorm((1408,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=1408, out_features=4224, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=1408, out_features=1408, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((1408,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): NBitLinearDynamic(in_features=1408, out_features=6144, bias=True | w=6, a=32)
+          (act): GELU(approximate='none')
+          (fc2): NBitLinearDynamic(in_features=6144, out_features=1408, bias=True | w=6, a=32)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+  )
+  (ln_vision): LayerNorm((1408,), eps=1e-05, elementwise_affine=True)
+  (Qformer): BertLMHeadModel(
+    (bert): BertModel(
+      (embeddings): BertEmbeddings(
+        (word_embeddings): None
+        (position_embeddings): None
+        (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+      (encoder): BertEncoder(
+        (layer): ModuleList(
+          (0): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (crossattention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=1408, out_features=768, bias=True)
+                (value): Linear(in_features=1408, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (1): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (2): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (crossattention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=1408, out_features=768, bias=True)
+                (value): Linear(in_features=1408, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (3): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (4): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (crossattention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=1408, out_features=768, bias=True)
+                (value): Linear(in_features=1408, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (5): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (6): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (crossattention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=1408, out_features=768, bias=True)
+                (value): Linear(in_features=1408, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (7): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (8): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (crossattention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=1408, out_features=768, bias=True)
+                (value): Linear(in_features=1408, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (9): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (10): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (crossattention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=1408, out_features=768, bias=True)
+                (value): Linear(in_features=1408, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (11): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): None
+            (output): None
+            (intermediate_query): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+              (intermediate_act_fn): GELUActivation()
+            )
+            (output_query): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+      )
+    )
+    (cls): None
+  )
+  (t5_model): T5ForConditionalGeneration(
+    (shared): Embedding(32128, 2048)
+    (encoder): T5Stack(
+      (embed_tokens): Embedding(32128, 2048)
+      (block): ModuleList(
+        (0): T5Block(
+          (layer): ModuleList(
+            (0): T5LayerSelfAttention(
+              (SelfAttention): T5Attention(
+                (q): Linear(in_features=2048, out_features=2048, bias=False)
+                (k): Linear(in_features=2048, out_features=2048, bias=False)
+                (v): Linear(in_features=2048, out_features=2048, bias=False)
+                (o): Linear(in_features=2048, out_features=2048, bias=False)
+                (relative_attention_bias): Embedding(32, 32)
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (1): T5LayerFF(
+              (DenseReluDense): T5DenseGatedActDense(
+                (wi_0): Linear(in_features=2048, out_features=5120, bias=False)
+                (wi_1): Linear(in_features=2048, out_features=5120, bias=False)
+                (wo): Linear(in_features=5120, out_features=2048, bias=False)
+                (dropout): Dropout(p=0.1, inplace=False)
+                (act): GELUActivation()
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+        (1-23): 23 x T5Block(
+          (layer): ModuleList(
+            (0): T5LayerSelfAttention(
+              (SelfAttention): T5Attention(
+                (q): Linear(in_features=2048, out_features=2048, bias=False)
+                (k): Linear(in_features=2048, out_features=2048, bias=False)
+                (v): Linear(in_features=2048, out_features=2048, bias=False)
+                (o): Linear(in_features=2048, out_features=2048, bias=False)
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (1): T5LayerFF(
+              (DenseReluDense): T5DenseGatedActDense(
+                (wi_0): Linear(in_features=2048, out_features=5120, bias=False)
+                (wi_1): Linear(in_features=2048, out_features=5120, bias=False)
+                (wo): Linear(in_features=5120, out_features=2048, bias=False)
+                (dropout): Dropout(p=0.1, inplace=False)
+                (act): GELUActivation()
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+      )
+      (final_layer_norm): T5LayerNorm()
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (decoder): T5Stack(
+      (embed_tokens): Embedding(32128, 2048)
+      (block): ModuleList(
+        (0): T5Block(
+          (layer): ModuleList(
+            (0): T5LayerSelfAttention(
+              (SelfAttention): T5Attention(
+                (q): Linear(in_features=2048, out_features=2048, bias=False)
+                (k): Linear(in_features=2048, out_features=2048, bias=False)
+                (v): Linear(in_features=2048, out_features=2048, bias=False)
+                (o): Linear(in_features=2048, out_features=2048, bias=False)
+                (relative_attention_bias): Embedding(32, 32)
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (1): T5LayerCrossAttention(
+              (EncDecAttention): T5Attention(
+                (q): Linear(in_features=2048, out_features=2048, bias=False)
+                (k): Linear(in_features=2048, out_features=2048, bias=False)
+                (v): Linear(in_features=2048, out_features=2048, bias=False)
+                (o): Linear(in_features=2048, out_features=2048, bias=False)
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (2): T5LayerFF(
+              (DenseReluDense): T5DenseGatedActDense(
+                (wi_0): Linear(in_features=2048, out_features=5120, bias=False)
+                (wi_1): Linear(in_features=2048, out_features=5120, bias=False)
+                (wo): Linear(in_features=5120, out_features=2048, bias=False)
+                (dropout): Dropout(p=0.1, inplace=False)
+                (act): GELUActivation()
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+        (1-23): 23 x T5Block(
+          (layer): ModuleList(
+            (0): T5LayerSelfAttention(
+              (SelfAttention): T5Attention(
+                (q): Linear(in_features=2048, out_features=2048, bias=False)
+                (k): Linear(in_features=2048, out_features=2048, bias=False)
+                (v): Linear(in_features=2048, out_features=2048, bias=False)
+                (o): Linear(in_features=2048, out_features=2048, bias=False)
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (1): T5LayerCrossAttention(
+              (EncDecAttention): T5Attention(
+                (q): Linear(in_features=2048, out_features=2048, bias=False)
+                (k): Linear(in_features=2048, out_features=2048, bias=False)
+                (v): Linear(in_features=2048, out_features=2048, bias=False)
+                (o): Linear(in_features=2048, out_features=2048, bias=False)
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (2): T5LayerFF(
+              (DenseReluDense): T5DenseGatedActDense(
+                (wi_0): Linear(in_features=2048, out_features=5120, bias=False)
+                (wi_1): Linear(in_features=2048, out_features=5120, bias=False)
+                (wo): Linear(in_features=5120, out_features=2048, bias=False)
+                (dropout): Dropout(p=0.1, inplace=False)
+                (act): GELUActivation()
+              )
+              (layer_norm): T5LayerNorm()
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+      )
+      (final_layer_norm): T5LayerNorm()
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (lm_head): Linear(in_features=2048, out_features=32128, bias=False)
+  )
+  (t5_proj): Linear(in_features=768, out_features=2048, bias=True)
+)
+2024-07-07 03:21:29,498 [INFO] dataset_ratios not specified, datasets will be concatenated (map-style datasets) or chained (webdataset.DataPipeline).
+2024-07-07 03:21:29,498 [INFO] Loaded 214354 records for val split from the dataset.
+2024-07-07 03:21:29,498 [INFO] Empty train splits.
+2024-07-07 03:21:29,530 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+2024-07-07 03:21:29,566 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+2024-07-07 03:21:29,573 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+2024-07-07 03:21:29,585 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+2024-07-07 03:21:29,597 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+2024-07-07 03:21:29,604 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+2024-07-07 03:21:29,609 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+2024-07-07 03:21:52,119 [WARNING] /fs/nexus-scratch/vla/micromamba/envs/LAVIS/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+Evaluation  [  0/419]  eta: 8:03:25    time: 69.2263  data: 38.9414  max mem: 24013
+Evaluation  [ 10/419]  eta: 1:53:37    time: 16.6696  data: 3.6040  max mem: 25269
+Evaluation  [ 20/419]  eta: 1:34:03    time: 11.3889  data: 0.0637  max mem: 25269
+Evaluation  [ 30/419]  eta: 1:25:52    time: 11.3640  data: 0.0498  max mem: 25269
+Evaluation  [ 40/419]  eta: 1:20:29    time: 11.2717  data: 0.0526  max mem: 25269
+Evaluation  [ 50/419]  eta: 1:16:44    time: 11.2867  data: 0.0492  max mem: 25269
+Evaluation  [ 60/419]  eta: 1:13:40    time: 11.4356  data: 0.0444  max mem: 25626
+Evaluation  [ 70/419]  eta: 1:10:48    time: 11.3983  data: 0.0588  max mem: 26743
+Evaluation  [ 80/419]  eta: 1:08:07    time: 11.2752  data: 0.0582  max mem: 26743
+Evaluation  [ 90/419]  eta: 1:05:41    time: 11.2862  data: 0.0344  max mem: 26743
+Evaluation  [100/419]  eta: 1:03:25    time: 11.4086  data: 0.0444  max mem: 26743
+Evaluation  [110/419]  eta: 1:01:09    time: 11.4106  data: 0.0666  max mem: 26743
+Evaluation  [120/419]  eta: 0:58:59    time: 11.3738  data: 0.0436  max mem: 26743
+Evaluation  [130/419]  eta: 0:56:52    time: 11.4201  data: 0.0458  max mem: 26743
+Evaluation  [140/419]  eta: 0:54:41    time: 11.3035  data: 0.0824  max mem: 26743
+Evaluation  [150/419]  eta: 0:52:37    time: 11.2750  data: 0.0903  max mem: 26743
+Evaluation  [160/419]  eta: 0:50:33    time: 11.3739  data: 0.0643  max mem: 26743
+Evaluation  [170/419]  eta: 0:48:32    time: 11.4077  data: 0.0518  max mem: 26743
+Evaluation  [180/419]  eta: 0:46:31    time: 11.4032  data: 0.0466  max mem: 26743
+Evaluation  [190/419]  eta: 0:44:30    time: 11.3528  data: 0.0538  max mem: 26743
+Evaluation  [200/419]  eta: 0:42:29    time: 11.3162  data: 0.0711  max mem: 26743
+Evaluation  [210/419]  eta: 0:40:31    time: 11.3437  data: 0.0569  max mem: 26743
+Evaluation  [220/419]  eta: 0:38:31    time: 11.3233  data: 0.0652  max mem: 26743
+Evaluation  [230/419]  eta: 0:36:32    time: 11.3018  data: 0.0542  max mem: 26743
+Evaluation  [240/419]  eta: 0:34:34    time: 11.2868  data: 0.0311  max mem: 26743
+Evaluation  [250/419]  eta: 0:32:36    time: 11.2474  data: 0.0560  max mem: 26743
+Evaluation  [260/419]  eta: 0:30:38    time: 11.3019  data: 0.0605  max mem: 26743
+Evaluation  [270/419]  eta: 0:28:41    time: 11.3026  data: 0.0460  max mem: 26743
+Evaluation  [280/419]  eta: 0:26:44    time: 11.2672  data: 0.0435  max mem: 26743
+Evaluation  [290/419]  eta: 0:24:47    time: 11.2614  data: 0.0577  max mem: 26743
+Evaluation  [300/419]  eta: 0:22:51    time: 11.3126  data: 0.0658  max mem: 26743
+Evaluation  [310/419]  eta: 0:20:55    time: 11.2372  data: 0.0640  max mem: 26743
+Evaluation  [320/419]  eta: 0:18:59    time: 11.1732  data: 0.0575  max mem: 26743
+Evaluation  [330/419]  eta: 0:17:03    time: 11.2568  data: 0.0603  max mem: 26743
+Evaluation  [340/419]  eta: 0:15:07    time: 11.2426  data: 0.0606  max mem: 26743
+Evaluation  [350/419]  eta: 0:13:12    time: 11.1681  data: 0.0503  max mem: 26743
+Evaluation  [360/419]  eta: 0:11:17    time: 11.2120  data: 0.0588  max mem: 26743
+Evaluation  [370/419]  eta: 0:09:22    time: 11.3076  data: 0.0631  max mem: 26743
+Evaluation  [380/419]  eta: 0:07:27    time: 11.3018  data: 0.0429  max mem: 26743
+Evaluation  [390/419]  eta: 0:05:32    time: 11.2719  data: 0.0463  max mem: 26743
+Evaluation  [400/419]  eta: 0:03:37    time: 11.2054  data: 0.0973  max mem: 26743
+Evaluation  [410/419]  eta: 0:01:43    time: 11.1201  data: 0.0750  max mem: 26743
+Evaluation  [418/419]  eta: 0:00:11    time: 10.3568  data: 0.0975  max mem: 26743
+Evaluation Total time: 1:19:37 (11.4026 s / it)
+2024-07-07 04:42:59,743 [WARNING] rank 0 starts merging results.
+result file saved to /fs/nexus-scratch/vla/LAVIS/output/BLIP2/VQA/20240707031/result/val_vqa_result.json
+loading VQA annotations and questions into memory...
+creating index...
+index created!
+Loading and preparing results...     
+DONE (t=0.36s)
+creating index...
+index created!
+2024-07-07 04:45:19,560 [INFO] Start VQA evaluation.
+computing accuracy
+Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 0% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 1% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [--------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 2% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 3% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 4% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 5% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 6% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [#-------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 7% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 8% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 9% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 10% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 11% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [##------------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 12% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 13% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 14% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 15% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 16% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [###-----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 17% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 18% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 19% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 20% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 21% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [####----------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 22% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 23% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 24% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 25% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 26% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [#####---------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 27% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 28% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 29% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 30% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 31% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [######--------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 32% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 33% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 34% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 35% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 36% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [#######-------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 37% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 38% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 39% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 40% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 41% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [########------------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 42% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 43% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 44% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 45% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 46% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [#########-----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 47% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 48% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 49% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 50% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 51% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [##########----------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 52% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 53% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 54% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 55% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 56% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [###########---------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 57% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 58% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 59% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 60% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 61% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [############--------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 62% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 63% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 64% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 65% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 66% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [#############-------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 67% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 68% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 69% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 70% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 71% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [##############------] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 72% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 73% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 74% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 75% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 76% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [###############-----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 77% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 78% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 79% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 80% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 81% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [################----] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 82% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 83% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 84% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 85% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 86% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [#################---] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 87% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 88% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 89% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 90% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 91% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [##################--] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 92% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 93% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 94% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 95% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 96% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [###################-] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 97% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 98% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Finshed Percent: [####################] 99% Done computing accuracy
+2024-07-07 04:46:01,430 [INFO] Overall Accuracy is: 0.00
+
+2024-07-07 04:46:01,430 [INFO] Per Answer Type Accuracy is the following:
+2024-07-07 04:46:01,430 [INFO] other : 0.00
+2024-07-07 04:46:01,430 [INFO] yes/no : 0.00
+2024-07-07 04:46:01,430 [INFO] number : 0.00
