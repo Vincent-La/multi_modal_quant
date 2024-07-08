@@ -113,10 +113,8 @@ if not os.path.exists(output_dir):
 print("Output Directory: %s" % output_dir)
 
 if "nexus" in socket.gethostname():
-    # root = 'root' ## TODO
-    
-    # NOTE: set to cwd for now but should change to project dir or repo
-    root = os.getcwd()
+    # NOTE: set to repo top-level dir
+    root = os.path.realpath('..')
 else:
     raise Exception("Not on nexus")
 
@@ -277,7 +275,7 @@ with open(f'{args.base_dir}/{args.output_dirname}/{args.env}/now.txt', "w") as n
         job_args = {arg.name:arg.copy() for arg in job_args}
         
         # NOTE: set job string and python_cmd
-        job_string = 'test_job'
+        job_string = 'blip2_flickr'
         python_cmd = 'python -m torch.distributed.run --nproc_per_node=8 evaluate.py'
         for arg_name, arg in job_args.items():
             python_cmd += arg.cmd_string
