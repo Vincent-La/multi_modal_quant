@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --array=1-15%80
+#SBATCH --output=/dev/null
+#SBATCH --error=/dev/null
+#SBATCH --requeue
+#SBATCH --account=scavenger
+#SBATCH --partition=scavenger
+#SBATCH --qos=scavenger
+#SBATCH --time=8:00:00
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=128G
+#SBATCH --gres=gpu:rtxa6000:8
+
+cd /fs/nexus-scratch/vla/LAVIS
+micromamba activate LAVIS
+srun --output=$(head -n $SLURM_ARRAY_TASK_ID /fs/nexus-scratch/vla/LAVIS/vqa_slurm_files/vit_small_batch/log.txt | tail -n 1)  $(head -n $(expr 1 \* $SLURM_ARRAY_TASK_ID - 0) /fs/nexus-scratch/vla/LAVIS/vqa_slurm_files/vit_small_batch/now.txt | tail -n 1)
+

@@ -1,0 +1,6 @@
+salesforce-lavis
+transformers
+torch
+pillow
+numpy
+ipykernel
